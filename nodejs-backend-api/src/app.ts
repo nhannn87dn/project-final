@@ -3,11 +3,13 @@ import express, { Express, Request, Response, NextFunction } from "express";
 import categoryRoute from './routers/category.route';
 import createError from "http-errors";
 import cors from 'cors'
+import path from "node:path";
 const app: Express = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+/* Cấu hình nhận thư mục public là thư mục chứa tài nguyên tĩnh */
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(cors({ origin: '*' }));
 
 
